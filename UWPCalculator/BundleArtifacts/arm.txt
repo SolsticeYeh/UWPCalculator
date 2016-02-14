@@ -1,0 +1,2 @@
+MainPackage=C:\Users\neal\Documents\Visual Studio 2015\Projects\UWPCalculator\UWPCalculator\bin\ARM\Release\UWPCalculator_1.0.1.0_ARM.appx
+SymbolPackage=C:\Users\neal\Documents\Visual Studio 2015\Projects\UWPCalculator\UWPCalculator\AppPackages\UWPCalculator_1.0.1.0_Test\UWPCalculator_1.0.1.0_ARM.appxsym
