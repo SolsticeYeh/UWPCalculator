@@ -34,11 +34,11 @@ namespace UWPCalculator
         public string d = "0";
         private bool isShiftKeyPressed;
 
-        private void Button_Click1(object sender, RoutedEventArgs e)
+        private void Button_Click1(object sender, RoutedEventArgs e)//数字按钮的功能实现
         {
-            if (b != "Error!")
+            if (b != "Error!")//除数为0报错后停止功能实现
             {
-                if (B.Text == "0")
+                if (B.Text == "0")//判断初始值是否为0
                 {
                     d = "1";
                 }
@@ -222,11 +222,11 @@ namespace UWPCalculator
 
         bool point = true;
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)//小数点按钮功能实现
         {
             if (b != "Error!")
             {
-                if (point == true)
+                if (point == true)//判断是否出现过小数点
                 {
                     if (d != "")
                     {
@@ -236,7 +236,7 @@ namespace UWPCalculator
                     {
                         d = "0.";
                     }
-                    point = false;
+                    point = false;//禁止在同一个数中在次出现小数点
                 }
                 B.Text = d;
             }
@@ -247,17 +247,17 @@ namespace UWPCalculator
 
         double num1 = 0;
 
-        private void Button_ClickA(object sender, RoutedEventArgs e)
+        private void Button_ClickA(object sender, RoutedEventArgs e)//运算符按钮功能实现
         {
             if (b != "Error!")
             {
-                if (c == false) { }
+                if (c == false) { }//判断是否在运算符后直接添加运算符
                 else
                 {
                     d = Convert.ToDouble(d).ToString();
                     b = b + d + " + ";
                     d = "";
-                    if (b.Contains("÷ 0 "))
+                    if (b.Contains("÷ 0 "))//判断除数为0报错
                     {
                         b = "Error!";
                         A.Text = b;
@@ -266,8 +266,8 @@ namespace UWPCalculator
                     else
                     {
                         A.Text = b;
-                        point = true;
-                        switch (a)
+                        point = true;//更改小数点为可添加状态
+                        switch (a)//判断之前的运算符并运算
                         {
                             case "0":
                                 num1 = Convert.ToDouble(B.Text);
@@ -289,7 +289,7 @@ namespace UWPCalculator
                                 B.Text = num1.ToString();
                                 break;
                         }
-                        a = "A";
+                        a = "A";//设置下一次计算使用的运算符
                     }
                 }
             }
@@ -451,7 +451,7 @@ namespace UWPCalculator
             c = false;
         }
 
-        private void Button_ClickE(object sender, RoutedEventArgs e)
+        private void Button_ClickE(object sender, RoutedEventArgs e)//等号按钮功能实现
         {
             if (b != "Error!")
             {
@@ -501,12 +501,12 @@ namespace UWPCalculator
                         }
                         a = "0";
                     }
-                    if (B.Text != "Error!")
+                    if (B.Text != "Error!")//添加历史纪录
                     {
                         his.Insert(0, new His { Head = b, Score = B.Text });
                         records.ItemsSource = his;
                     }
-                    b = "";
+                    b = "";//清空变量，为下一次运算做准备
                     d = "";
                 }
             }
@@ -515,9 +515,9 @@ namespace UWPCalculator
             c = false;
         }
 
-        private void Pivot_KeyDown(object sender, KeyRoutedEventArgs e)
+        private void Pivot_KeyDown(object sender, KeyRoutedEventArgs e)//启用键盘监听，可以使用键盘对应的键执行按钮功能
         {
-            if (e.Key == Windows.System.VirtualKey.Shift) isShiftKeyPressed = true;
+            if (e.Key == Windows.System.VirtualKey.Shift) isShiftKeyPressed = true;//判断是否按下Shift键
             else if (isShiftKeyPressed == false)
             {
                 if (e.Key == Windows.System.VirtualKey.Number1 || e.Key == Windows.System.VirtualKey.NumberPad1)
@@ -553,7 +553,7 @@ namespace UWPCalculator
                 if (e.Key == Windows.System.VirtualKey.Enter || (int)e.Key == 187)
                     Button_ClickE(sender, e);
             }
-            else if (isShiftKeyPressed == true)
+            else if (isShiftKeyPressed == true)//这个是因为UWP没有具体的VirtualKey，直接用值
             {
                 if ((int)e.Key == 187)
                     Button_ClickA(sender, e);
@@ -562,12 +562,12 @@ namespace UWPCalculator
             }
         }
 
-        private void Pivot_KeyUp(object sender, KeyRoutedEventArgs e)
+        private void Pivot_KeyUp(object sender, KeyRoutedEventArgs e)//监测是否松开Shift键
         {
             if (e.Key == Windows.System.VirtualKey.Shift) isShiftKeyPressed = false;
         }
 
-        private void AppBarButtonC_Click(object sender, RoutedEventArgs e)
+        private void AppBarButtonC_Click(object sender, RoutedEventArgs e)//清空数据按钮功能实现
         {
             A.Text = "";
             B.Text = "0";
@@ -577,13 +577,13 @@ namespace UWPCalculator
             c = true;
         }
 
-        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)//清空历史纪录按钮功能实现
         {
             his.Clear();
             records.ItemsSource = his;
         }
 
-        public class His
+        public class His//历史纪录功能实现
         {
             public string Head { get; set; }
             public string Score { get; set; }
@@ -591,7 +591,7 @@ namespace UWPCalculator
 
         public ObservableCollection<His> his = new ObservableCollection<His>();
 
-        private void records_ItemClick(object sender, ItemClickEventArgs e)
+        private void records_ItemClick(object sender, ItemClickEventArgs e)//点击历史纪录返回数值到计算界面功能实现
         {
             A.Text = ((His)e.ClickedItem).Head.Substring(0, ((His)e.ClickedItem).Head.Length - 3);
             B.Text = ((His)e.ClickedItem).Score;

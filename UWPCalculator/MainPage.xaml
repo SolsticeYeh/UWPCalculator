@@ -48,7 +48,7 @@
                             <RowDefinition Height="100*"/>
                             <RowDefinition Height="5*"/>
                         </Grid.RowDefinitions>
-                        <Button Background="#C2C2C2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="7" FontFamily="Microsoft YaHei UI" FontWeight="Bold" FontSize="24" Click="Button_Click7"></Button>
+                        <Button Background="#C2C2C2" Name="seven" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="7" FontFamily="Microsoft YaHei UI" FontWeight="Bold" FontSize="24" Click="Button_Click7"></Button>
                         <Button Background="#C2C2C2" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="8" FontFamily="Microsoft YaHei UI" FontWeight="Bold" FontSize="24" Click="Button_Click8"></Button>
                         <Button Background="#C2C2C2" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="9" FontFamily="Microsoft YaHei UI" FontWeight="Bold" FontSize="24" Click="Button_Click9"></Button>
                         <Button Background="#C2C2C2" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="+" FontFamily="Microsoft YaHei UI" FontWeight="Bold" FontSize="24" Click="Button_ClickA"></Button>
